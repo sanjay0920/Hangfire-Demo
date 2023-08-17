@@ -8,6 +8,8 @@ namespace Hangfire_Demo.Services
         void SendEmail();
         void InsertRecords(product product);
 
+        DataTable SyncData();
+
         List<product> GetAllRecords();
     }
 }

@@ -35,7 +35,7 @@ namespace Hangfire_Demo.Services
             try
             {
                 string connection = _configuration.GetValue<string>("ConnectionStrings:DefaultConnection");
-                var query = "INSERT INTO PILOT (id,name,price) VALUES(@id,@name,@price)";
+                var query = "INSERT INTO PRODUCT (id,name,price) VALUES(@id,@name,@price)";
                 SqlConnection con = new SqlConnection(connection);
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(query, con))
@@ -55,8 +55,8 @@ namespace Hangfire_Demo.Services
 
         public List<product> GetAllRecords()
         {
-            DataTable pilots = SyncData();
-            return (from DataRow dr in pilots.Rows
+            DataTable products = SyncData();
+            return (from DataRow dr in products.Rows
                     select new product()
                     {
                         id = Convert.ToInt32(dr["Id"]),

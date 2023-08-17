@@ -1,3 +1,6 @@
+using Hangfire;
+using Hangfire_Demo.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,7 +15,7 @@ builder.Services.AddHangfire(config => config
     .UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddHangfireServer();
 
-builder.Services.AddTransient<IserviceManagement, SeviceManagement>();
+builder.Services.AddTransient<Iservice, service>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
